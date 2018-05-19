@@ -21,20 +21,69 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-lg-4">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
                 <form>
                     <div class="form-group">
                         <label for="serviceTag">Service Tag</label>
-                        <input type="text" class="form-control"  id="serviceTag" aria-describedby="serviceTag" placeholder="Enter Service Tag">
+                        <input type="text" class="form-control"  id="serviceTag" aria-describedby="serviceTag" placeholder="Enter Service Tag" onblur="showIssue()">
+                        <p>Based on asset warranty contact channel will be displayed</p>
                     </div>
-                    <button type="button" class="btn btn-primary" onclick="initChat()">Submit</button>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Select Issue Type
+                        </button>
+                        <div id="issueDropdown" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Slow Performance</a>
+                            <a class="dropdown-item" href="#">Keyboard not working</a>
+                            <a class="dropdown-item" href="#">Touch pad not working</a>
+                        </div>
+                    </div>
                 </form>
+            </div>
+        </div>
+        <div id="contact-row" class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+                <h3>Contact Options</h3>
+                <div class="call-us">
+                    <h5>Call Us</h5>
+                    <p class="phone-no">1-855-305-9057</p>
+                    <p>24/7</p>
+                    <p>Please Note: You will be asked to enter your Express Service Code: <strong>34285956052</strong></p>
+                </div>
+                <div class="chat-with-us">
+                    <h5>Chat with us</h5>
+                    <p>Start a chat session with one of our technical support experts.</p>
+                    <button type="button" id="chatButton" class="btn btn-primary" onclick="initChat()">Start Chat</button>
+                </div>
             </div>
         </div>
     </div>
 </body>
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="https://unpkg.com/popper.js/dist/umd/popper.min.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
+    $('.dropdown').hide();
+    $('#contact-row').hide();
+    $('#issueDropdown > a').click(function() {
+        var val = $(this).text();
+        if( val != 'Select Issue Type' ) {
+            $('#dropdownMenuButton').text(val);
+            $('#contact-row').show();
+        }
+    });
+
+    function showIssue() {
+        if( $('#serviceTag').val().length != 0 ) {
+            $('.dropdown').show();
+        } else {
+            $('.dropdown').hide();
+        }
+    }
+
     function initChat() {
         var buttonId, deploymentId;
         var serviceTagVal = document.getElementById('serviceTag').value.toLowerCase();
