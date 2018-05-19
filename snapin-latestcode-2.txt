@@ -94,3 +94,14 @@ embedded_svc.settings.extraPrechatInfo = [{
                                             
   
 embedded_svc.init('https://dellservices--DEV3.cs20.my.salesforce.com', 'https://dev3-dev2-dellservices--dev2.cs20.force.com/LA', gslbBaseURL, '00Dm0000000DQXs', 'Test_Snap_In', { baseLiveAgentContentURL: 'https://c.la4-c1cs-phx.salesforceliveagent.com/content', deploymentId: '572m00000004Ckx', buttonId: '573m00000004DC9', baseLiveAgentURL: 'https://d.la4-c1cs-phx.salesforceliveagent.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Im0000000001iEAA_16369f295e6', isOfflineSupportEnabled: false}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://dellservices--DEV3.cs20.my.salesforce.com/embeddedservice/5.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }</script>
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+service tag - 10CY091
+
+<a id="liveagent_button_online_5733B0000004D90" href="javascript://Chat" style="display: none;" onclick="liveagent.startChat('5733B0000004D90')"><!-- Online Chat Content --></a><div id="liveagent_button_offline_5733B0000004D90" style="display: none;"><!-- Offline Chat Content --></div><script type="text/javascript">
+if (!window._laq) { window._laq = []; }
+window._laq.push(function(){liveagent.showWhenOnline('5733B0000004D90', document.getElementById('liveagent_button_online_5733B0000004D90'));
+liveagent.showWhenOffline('5733B0000004D90', document.getElementById('liveagent_button_offline_5733B0000004D90'));
+});</script> 
