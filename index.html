@@ -45,7 +45,13 @@
             buttonId = '573m00000004DCE';
             deploymentId = '572m00000004Cl2';
         }
-        var initESW = function(gslbBaseURL, buttonId) {
+        var test1 = 12;
+        var test2 = 'something';
+        var testFunction = function(test1, test2) {
+            console.log(test1 + ' tst1');
+            console.log(test2 + ' test2')
+        }
+        var initESW = function(gslbBaseURL, deploymentId, buttonId) {
             console.log(buttonId);
             embedded_svc.settings.displayHelpButton = true; //Or false
             embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
