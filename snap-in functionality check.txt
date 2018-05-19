@@ -1,0 +1,23 @@
+How to use the existing opened case when we accept the chat through SNAPIN
+How to create the case when there are no existing cases open.
+
+Need to check on contact duplication
+Data encryption
+Label Translation 
+Multi lingual text exchange
+Quick text check
+
+How to connect snap-in to BOT
+
+
+For the same Q, with pre-chat form,without pre chat form.
+
+Accepting chats from live agent and snap-in
+Transfer the chats from snapin and live agent and vice versa.
+Attachments
+Raise Flag
+Omnisupervisor - to check the customer waiting
+Omnisupervisor - to check the agent capacity
+Multibrowser
+Fallback option
+with asset and without asset
