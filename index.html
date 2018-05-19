@@ -86,6 +86,7 @@
 
     function initChat() {
         var buttonId, deploymentId;
+        var issueVal = $('#issueDropdown').text();
         var serviceTagVal = document.getElementById('serviceTag').value.toLowerCase();
         if( serviceTagVal === 'dtb4pc2' ) {
             buttonId = '573m00000004DC9';
@@ -94,7 +95,7 @@
             buttonId = '573m00000004DCE';
             deploymentId = '572m00000004Cl2';
         }
-        var initESW = function(gslbBaseURL, deploymentId, buttonId, serviceTagVal) {
+        var initESW = function(gslbBaseURL, deploymentId, buttonId, serviceTagVal, issueVal) {
             console.log(buttonId);
             embedded_svc.settings.displayHelpButton = true; //Or false
             embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
@@ -152,7 +153,7 @@
                                                                     {"label":"Last Name", "transcriptFields":["LastName__c"]},
                                                                     {"label":"Primary Phone Number", "transcriptFields":["ContactNumber__c"]},
                                                                     {"label":"Email Address", "transcriptFields":["Email__c"]},
-                                                                    {"label":"Subject",  "value": 'Some test value', "transcriptFields":["Issue__c"]},
+                                                                    {"label":"Subject",  "value": issueVal, "transcriptFields":["Issue__c"]},
                                                                     {"label":"Service Tag", "value": serviceTagVal, "transcriptFields":["Service_Tag__c"]},
                                                                     {"label":"Issue Description", "transcriptFields":["Description__c"]},
                                                                     {"label":"AccountNumber", "transcriptFields":["CustomerNumber__c"]},
@@ -174,7 +175,7 @@
                                                                     
                 
 
-            embedded_svc.init('https://dellservices--DEV3.cs20.my.salesforce.com', 'https://dev3-dev2-dellservices--dev2.cs20.force.com/LA', gslbBaseURL, '00Dm0000000DQXs', 'Test_Snap_In', { baseLiveAgentContentURL: 'https://c.la4-c1cs-phx.salesforceliveagent.com/content', deploymentId: deploymentId, buttonId: buttonId, baseLiveAgentURL: 'https://d.la4-c1cs-phx.salesforceliveagent.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Im0000000001iEAA_16369f295e6', isOfflineSupportEnabled: false}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://dellservices--DEV3.cs20.my.salesforce.com/embeddedservice/5.0/esw.min.js'); s.onload = function() { initESW(null, deploymentId, buttonId, serviceTagVal); }; document.body.appendChild(s); } else { initESW('https://service.force.com', deploymentId, buttonId, serviceTagVal); }
+            embedded_svc.init('https://dellservices--DEV3.cs20.my.salesforce.com', 'https://dev3-dev2-dellservices--dev2.cs20.force.com/LA', gslbBaseURL, '00Dm0000000DQXs', 'Test_Snap_In', { baseLiveAgentContentURL: 'https://c.la4-c1cs-phx.salesforceliveagent.com/content', deploymentId: deploymentId, buttonId: buttonId, baseLiveAgentURL: 'https://d.la4-c1cs-phx.salesforceliveagent.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Im0000000001iEAA_16369f295e6', isOfflineSupportEnabled: false}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://dellservices--DEV3.cs20.my.salesforce.com/embeddedservice/5.0/esw.min.js'); s.onload = function() { initESW(null, deploymentId, buttonId, serviceTagVal, issueVal); }; document.body.appendChild(s); } else { initESW('https://service.force.com', deploymentId, buttonId, serviceTagVal, issueVal); }
     }
 </script>
 </html>
