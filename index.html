@@ -30,6 +30,7 @@
                 <div class="col-lg-12">
                     <div class="jumbotron">
                         <h1 class="display-4">Welcome Back</h1>
+                        <button type="button" id="resumeChatButton" class="btn btn-primary" onclick="resumeChat()">Start Chat</button>
                     </div>
                 </div>
             </div>
@@ -127,7 +128,9 @@
         if( window.location.href.split("?").length > 1 ) {
             var serviceTag = window.location.href.split("?")[1].split("=")[1].toLowerCase();
             if( serviceTag != '' ) {
-                resumeChat("573m00000004DCd", "572m00000004Cl7");
+                $("#resumeChatButton").click(function() {
+                    resumeChat("573m00000004DCd", "572m00000004Cl7");
+                });
             }
             $('.resume-chat-msg').removeClass('hide');
             $('.new-chat').addClass('hide');
