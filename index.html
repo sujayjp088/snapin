@@ -185,15 +185,8 @@
                         }];
                     //"value":serviceTagVal, 
                     embedded_svc.settings.extraPrechatFormDetails = [
-                                                                    {"label":"First Name", "transcriptFields":["FirstName__c"]},
-                                                                    {"label":"Last Name", "transcriptFields":["LastName__c"]},
-                                                                    {"label":"Primary Phone Number", "transcriptFields":["ContactNumber__c"]},
-                                                                    {"label":"Email Address", "transcriptFields":["Email__c"]},
                                                                     {"label":"Subject", "value":issueVal, "transcriptFields":["Issue__c"]},
-                                                                    {"label":"Service Tag",  "value":serviceTagVal, "transcriptFields":["Service_Tag__c"]},
-                                                                    {"label":"Issue Description", "transcriptFields":["Description__c"]},
-                                                                    {"label":"AccountNumber", "transcriptFields":["CustomerNumber__c"]},
-                                                                    {"label":"Account BUID", "transcriptFields":["CustomerBUID__c"]},
+                                                                    {"label":"Service Tag",  "value":serviceTagVal, "transcriptFields":["Service_Tag__c"]}
                                                                     ];  
                                                                     
                     embedded_svc.settings.extraPrechatInfo = [{
@@ -215,15 +208,27 @@
 
     function eleExist(eleSelector, callbackFunc) {
         var findingEle = setInterval(function() {
-            if( $(eleSelector).text() === 'Chat with an Expert' ) {
-                callbackFunc();
+            if( $(eleSelector).length > 0 ) {
+                callbackFunc(eleSelector);
                 clearInterval(findingEle);
             }
         }, 1000);
     }
 
-    function chatClick() {
-        $('#helpButtonSpan > .message').click();
+    function chatClick(eleSelector) {
+        if( $(eleSelector).text() === 'Chat with an Expert' ) {
+            $('#helpButtonSpan > .message').click();
+        }
     }
 </script>
 </html>
+
+<!-- {"label":"First Name", "transcriptFields":["FirstName__c"]},
+                                                                    {"label":"Last Name", "transcriptFields":["LastName__c"]},
+                                                                    {"label":"Primary Phone Number", "transcriptFields":["ContactNumber__c"]},
+                                                                    {"label":"Email Address", "transcriptFields":["Email__c"]},
+                                                                    {"label":"Subject", "value":issueVal, "transcriptFields":["Issue__c"]},
+                                                                    {"label":"Service Tag",  "value":serviceTagVal, "transcriptFields":["Service_Tag__c"]},
+                                                                    {"label":"Issue Description", "transcriptFields":["Description__c"]},
+                                                                    {"label":"AccountNumber", "transcriptFields":["CustomerNumber__c"]},
+                                                                    {"label":"Account BUID", "transcriptFields":["CustomerBUID__c"]}, -->
