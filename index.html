@@ -204,33 +204,32 @@
                                                         ];  
             embedded_svc.settings.extraPrechatInfo = [{
                             "entityFieldMaps": [{
-                                "doCreate":true,
+                                "doCreate":false,
                                 "doFind":true,
                                 "fieldName":"LastName",
                                 "isExactMatch":true,
                                 "label":"Last Name"
                             }, {
-                                "doCreate":true,
+                                "doCreate":false,
                                 "doFind":true,
                                 "fieldName":"FirstName",
                                 "isExactMatch":true,
                                 "label":"First Name"
                             }, {
-                                "doCreate":true,
+                                "doCreate":false,
                                 "doFind":true,
                                 "fieldName":"Email",
                                 "isExactMatch":true,
                                 "label":"Email"
                             }, {
-                                "doCreate":true,
+                                "doCreate":false,
                                 "doFind":true,
                                 "fieldName":"Primary_Phone__c",
                                 "isExactMatch":true,
                                 "label":"Primary Phone Number"
                             }
                             ],
-                            "entityName":"Contact",
-                            "saveToTranscript": "Contact"
+                            "entityName":"Contact"
                         },{
                             "entityFieldMaps": [{
                             "doCreate": false,
@@ -241,7 +240,18 @@
                             }],
                             "entityName": "Asset",
                             "saveToTranscript": "Asset__c"
-                        }];
+                        },{
+                            "entityFieldMaps": [{
+                                "doCreate":false,
+                                "doFind":true,
+                                "fieldName":"Issue_Description__c",
+                                "isExactMatch":true,
+                                "label":"Issue Description"
+                            }
+                            ],
+                            "entityName":"Case"
+                        }
+                    ];
                     //"value":serviceTagVal, 
                     // embedded_svc.settings.extraPrechatInfo = [{
                     //                             "entityFieldMaps": [{
