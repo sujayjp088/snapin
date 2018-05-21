@@ -116,7 +116,7 @@
         if( window.location.href.split("?").length > 1 ) {
             var serviceTag = window.location.href.split("?")[1].split("=")[1].toLowerCase();
             if( serviceTag != '' ) {
-                initChat(serviceTag);
+                resumeChat("573m00000004DCd", "572m00000004Cl7");
             }
         }
     })();
@@ -137,7 +137,7 @@
             var serviceTagVal = document.getElementById('serviceTag').value.toLowerCase();
             var issueVal = $('#dropdownMenuButton').text();
         } else {
-            var serviceTagVal = '261kz72';
+            var serviceTagVal = serviceTag;
         }
         if( serviceTagVal === 'dtb4pc2' ) {
             buttonId = '573m00000004DC9';
@@ -209,7 +209,7 @@
                             "saveToTranscript": "Contact"
                         },{
                             "entityFieldMaps": [{
-                            "doCreate": true,
+                            "doCreate": false,
                             "doFind": true,
                             "fieldName": "Name",
                             "isExactMatch": true,
@@ -253,6 +253,32 @@
             $('#helpButtonSpan > .message').click();
             clearInterval(findingEle);
         }
+    }
+
+    function resumeChat(buttonId, deploymentId) {
+        var initESW = function(gslbBaseURL) {
+            embedded_svc.settings.displayHelpButton = true; //Or false
+            embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+            //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+            //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+
+            //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+            //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+            // Settings for Live Agent
+            //embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+            // Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+            // Returns a valid button ID.
+            //};
+            //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+            //embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
+            //embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
+
+            embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+            embedded_svc.settings.entryFeature = 'LiveAgent';
+
+            embedded_svc.init('https://dellservices--DEV3.cs20.my.salesforce.com', 'https://dev3-dev2-dellservices--dev2.cs20.force.com/LASI1', gslbBaseURL, '00Dm0000000DQXs', 'Test_snapin_resumechat', { baseLiveAgentContentURL: 'https://c.la4-c1cs-phx.salesforceliveagent.com/content', deploymentId: '572m00000004Cl7', buttonId: '573m00000004DCd', baseLiveAgentURL: 'https://d.la4-c1cs-phx.salesforceliveagent.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Im0000000001xEAA_1638222454e', isOfflineSupportEnabled: false}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://dellservices--DEV3.cs20.my.salesforce.com/embeddedservice/5.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); }
     }
 </script>
 </html>
