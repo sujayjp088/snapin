@@ -133,7 +133,7 @@
         if( window.location.href.split("?").length > 1 ) {
             var serviceTag = window.location.href.split("?")[1].split("=")[1].toLowerCase();
             if( serviceTag != '' ) {
-                resumeChat("573m00000004DCd", "572m00000004Cl7");
+                resumeChat("573m00000004DCd", "572m00000004Cl7", serviceTag);
                 eleExist('#helpButtonSpan > .message', chatClick);
             }
             $('.resume-chat-msg').removeClass('hide');
@@ -288,15 +288,15 @@
         }
     }
 
-    function resumeChat(buttonId, deploymentId) {
+    function resumeChat(buttonId, deploymentId, serviceTag) {
         var initESW = function(gslbBaseURL) {
             embedded_svc.settings.displayHelpButton = true; //Or false
             embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
             embedded_svc.settings.enabledFeatures = ['LiveAgent'];
             embedded_svc.settings.entryFeature = 'LiveAgent';
-            
+
             embedded_svc.settings.extraPrechatFormDetails = [
-                                                        {"label":"Service Tag", "value":serviceTagVal, "transcriptFields":["Service_Tag__c"]}
+                                                        {"label":"Service Tag", "value":serviceTag, "transcriptFields":["Service_Tag__c"]}
                                                         ]; 
             embedded_svc.settings.extraPrechatInfo = [{
                             "entityFieldMaps": [{
