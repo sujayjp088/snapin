@@ -47,7 +47,7 @@
                     <form>
                         <div class="form-group">
                             <label for="serviceTag">Service Tag</label>
-                            <input type="text" class="form-control"  id="serviceTag" aria-describedby="serviceTag" placeholder="Enter Service Tag" onkeypress="showIssue()">
+                            <input type="text" class="form-control"  id="serviceTag" aria-describedby="serviceTag" placeholder="Enter Service Tag" onblur="showIssue()">
                             <p>Based on asset warranty contact channel will be displayed</p>
                         </div>
                         <div class="dropdown">
@@ -145,16 +145,12 @@
     })();
 
     function showIssue() {
-        if( $('#serviceTag').val().length === 6 ) {
-            if( $('#serviceTag').val().length != 0 ) {
-                $('.dropdown').show();
-            } else {
-                $('.dropdown').hide();
-                $('#dropdownMenuButton').text('Select Issue Type');
-                $('#contact-row').hide();
-            }
+        if( $('#serviceTag').val().length != 0 ) {
+            $('.dropdown').show();
         } else {
             $('.dropdown').hide();
+            $('#dropdownMenuButton').text('Select Issue Type');
+            $('#contact-row').hide();
         }
     }
 

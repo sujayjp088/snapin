@@ -6,13 +6,13 @@
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="/node_modules/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/main.css" />
     <script src="main.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand" href="#">
-            <img src="assets/DellTech_Logo_Prm_Blue.jpg" class="d-inline-block align-top" alt="">
+            <img src="/assets/DellTech_Logo_Prm_Blue.jpg" class="d-inline-block align-top" alt="">
         </a>
     </nav>
     <div class="container">
@@ -63,6 +63,7 @@
                     <label for="custBuid">Cust BUID</label>
                     <input type="text" class="form-control"  id="custBuid" aria-describedby="custBuid" placeholder="Customer BUID">
                 </div>
+                <button type="button" id="liveAgentButton" class="btn btn-primary" onclick="liveAgent()">Start Chat</button>
             </div>
         </div>
     </div>
