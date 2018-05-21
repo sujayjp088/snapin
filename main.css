@@ -35,3 +35,16 @@
 .resume-chat-msg .jumbotron {
     text-align: center;
 }
+
+.navbar.navbar-light.bg-light {
+    background-color: #fff!important;
+    box-shadow: 0 5px 5px 1px #e3e3e3;
+}
+
+.navbar.navbar-light.bg-light > .navbar-brand {
+    margin: 0 auto;
+}
+
+.navbar.navbar-light.bg-light > .navbar-brand > img {
+    height: 40px;
+}
