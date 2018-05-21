@@ -28,3 +28,10 @@
     display: none;
 }
 
+.new-chat.hide {
+    display: none;
+}
+
+.resume-chat-msg .jumbotron {
+    text-align: center;
+}
