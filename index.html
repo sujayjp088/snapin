@@ -112,6 +112,15 @@
         }
     });
 
+    (function() {
+        if( window.location.href.split("?").length > 1 ) {
+            var serviceTag = window.location.href.split("?")[1].split("=")[1].toLowerCase();
+            if( serviceTag != '' ) {
+                initChat(serviceTag);
+            }
+        }
+    })();
+
     function showIssue() {
         if( $('#serviceTag').val().length != 0 ) {
             $('.dropdown').show();
@@ -122,10 +131,14 @@
         }
     }
 
-    function initChat() {
+    function initChat(serviceTag) {
         var buttonId, deploymentId;
-        var issueVal = $('#dropdownMenuButton').text();
-        var serviceTagVal = document.getElementById('serviceTag').value.toLowerCase();
+        if( serviceTag === "" || serviceTag === undefined  ) {
+            var serviceTagVal = document.getElementById('serviceTag').value.toLowerCase();
+            var issueVal = $('#dropdownMenuButton').text();
+        } else {
+            var serviceTagVal = '261kz72';
+        }
         if( serviceTagVal === 'dtb4pc2' ) {
             buttonId = '573m00000004DC9';
             deploymentId = '572m00000004Ckx';
@@ -196,7 +209,7 @@
                             "saveToTranscript": "Contact"
                         },{
                             "entityFieldMaps": [{
-                            "doCreate": false,
+                            "doCreate": true,
                             "doFind": true,
                             "fieldName": "Name",
                             "isExactMatch": true,
