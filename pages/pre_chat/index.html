@@ -44,28 +44,72 @@
                     <input type="text" class="form-control"  id="serviceTag" aria-describedby="serviceTag" placeholder="Service Tag">
                 </div>
                 <div class="form-group">
-                    <label for="sr">SR#</label>
-                    <input type="text" class="form-control"  id="sr" aria-describedby="sr" placeholder="SR#">
-                </div>
-                <div class="form-group">
                     <label for="description">Description</label>
                     <input type="text" class="form-control"  id="description" aria-describedby="description" placeholder="Description">
                 </div>
-                <div class="form-group">
-                    <label for="phoneExt">Phone Ext</label>
-                    <input type="text" class="form-control"  id="phoneExt" aria-describedby="phoneExt" placeholder="Phone Ext">
+                <div class=" slds-scope slds-docked-form-footer">
+
+                    <button type="button" class="slds-button slds-button_neutral" onclick="startChat();">Get Chat Button</button>
+                    
+                    <!--Start  Online Pilot Chat Content -->
+                    <a href="#"  onclick = "" id="liveagent_button_online_5733B0000004D90"  style="display: none;" class="slds-button slds-button_brand">Pilot Chat Button</a>
+                    
+                    <!-- Offline Pilot Chat Content -->
+                    
+                    <div id="liveagent_button_offline_5733B0000004D90" style="display: none;">No American Chat Button agent available</div>
+                    
                 </div>
-                <div class="form-group">
-                    <label for="customerNumber">Customer Number</label>
-                    <input type="text" class="form-control"  id="customerNumber" aria-describedby="customerNumber" placeholder="Customer Number">
-                </div>
-                <div class="form-group">
-                    <label for="custBuid">Cust BUID</label>
-                    <input type="text" class="form-control"  id="custBuid" aria-describedby="custBuid" placeholder="Customer BUID">
-                </div>
-                <button type="button" id="liveAgentButton" class="btn btn-primary" onclick="liveAgent()">Start Chat</button>
             </div>
         </div>
     </div>
+    <script type='text/javascript' src='https://c.la4-c1cs-phx.salesforceliveagent.com/content/g/js/42.0/deployment.js'></script>
+    <script type='text/javascript'>
+        
+        function startChat()
+        {
+            console.log("Inside startchat method");
+            console.log("About to initiate the chat");
+            
+            
+             liveagent.enableLogging();
+            //place deployment init script
+              liveagent.init('https://d.la4-c1cs-phx.salesforceliveagent.com/chat', '5723B0000004Crz', '00Dm0000000DQXs');
+           
+           
+            //place the button id
+            var chatbuttonId = '5733B0000004D90';
+            console.log('chatbuttonId is '+chatbuttonId);
+            
+            if (!window._laq) { window._laq = []; }
+                
+                window._laq.push(function(){
+                    
+                    var serviceTag = '00TC7GP'; //place serviceTag 
+                    console.log("Inside push method");
+                    
+                   
+                    
+                    liveagent.showWhenOnline(chatbuttonId, document.getElementById('liveagent_button_online_'+chatbuttonId));
+                    liveagent.showWhenOffline(chatbuttonId, document.getElementById('liveagent_button_offline_'+chatbuttonId));
+                    
+                    liveagent.addCustomDetail('serviceTag', serviceTag);
+                   
+                    
+                   
+                    
+                    liveagent.addButtonEventHandler(chatbuttonId,function (e){
+                        if(e == liveagent.BUTTON_EVENT.BUTTON_AVAILABLE){              
+                            
+                            document.getElementById("liveagent_button_online_5733B0000004D90").onclick = function() {
+                                liveagent.startChat('5733B0000004D90');
+                                return false; 
+                              };
+                    }
+                });
+            });
+        }
+                    
+                    
+    </script>
 </body>
 </html>
