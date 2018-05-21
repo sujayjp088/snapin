@@ -227,8 +227,7 @@
                                 "fieldName":"Primary_Phone__c",
                                 "isExactMatch":true,
                                 "label":"Primary Phone Number"
-                            }
-                            ],
+                            }],
                             "entityName":"Contact"
                         },{
                             "entityFieldMaps": [{
@@ -293,7 +292,20 @@
         var initESW = function(gslbBaseURL) {
             embedded_svc.settings.displayHelpButton = true; //Or false
             embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-
+            embedded_svc.settings.extraPrechatFormDetails = [
+                                                        {"label":"Service Tag", "value":serviceTagVal, "transcriptFields":["Service_Tag__c"]}
+                                                        ]; 
+            embedded_svc.settings.extraPrechatInfo = [{
+                            "entityFieldMaps": [{
+                            "doCreate": false,
+                            "doFind": true,
+                            "fieldName": "Name",
+                            "isExactMatch": true,
+                            "label": "Service Tag"
+                            }],
+                            "entityName": "Asset",
+                            "saveToTranscript": "Asset__c"
+                        }];
             //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
             //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
 
