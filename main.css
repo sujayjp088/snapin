@@ -52,3 +52,23 @@
 .live-agent-resume.hide {
     display: none;
 }
+
+#prechat_submit {
+    width: 50%;
+    font-size: 1em;
+    font-weight: 200;
+    border-radius: 4px;
+    background: #4494ED;
+    color: #FFFFFF;
+    border: none;
+    cursor: pointer;
+    padding: 7px;
+  }
+  
+  #prechat_submit:hover {
+    background: #1674df;
+  }
+  
+  #prechat_submit:focus {
+    outline: 0;
+  }
