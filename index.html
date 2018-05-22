@@ -279,7 +279,7 @@
 
     function changeMaxLengthInput(eleSelector, findingEle) {
         $(eleSelector).attr('maxlength', 500);
-        console.log(findingEle);
+        clearInterval(findingEle);
     }
 
     function resumeChat(buttonId, deploymentId, serviceTag, srNumber, FirstName, lastName) {
