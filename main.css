@@ -48,3 +48,7 @@
 .navbar.navbar-light.bg-light > .navbar-brand > img {
     height: 40px;
 }
+
+.live-agent-resume.hide {
+    display: none;
+}
