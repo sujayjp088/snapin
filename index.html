@@ -147,9 +147,9 @@
             var lastName = urlParameters.split("&")[3].split("=")[1].toLowerCase();
             if( serviceTag != '' ) {
                 if( serviceTag === '10cy091' ) {
-                    resumeChat("573m00000004DCd", "572m00000004Cl7", serviceTag, srNumber, FirstName, lastName, 'snapIn');
-                } else {
                     resumeChat("573m00000004DCd", "572m00000004Cl7", serviceTag, srNumber, FirstName, lastName);
+                } else {
+                    resumeChat("573m00000004DCd", "572m00000004Cl7", serviceTag, srNumber, FirstName, lastName, 'snapIn');
                     eleExist('#helpButtonSpan > .message', chatClick);
                 }
             }
@@ -377,13 +377,3 @@
     }
 </script>
 </html>
-
-<!-- {"label":"First Name", "transcriptFields":["FirstName__c"]},
-                                                                    {"label":"Last Name", "transcriptFields":["LastName__c"]},
-                                                                    {"label":"Primary Phone Number", "transcriptFields":["ContactNumber__c"]},
-                                                                    {"label":"Email Address", "transcriptFields":["Email__c"]},
-                                                                    {"label":"Subject", "value":issueVal, "transcriptFields":["Issue__c"]},
-                                                                    {"label":"Service Tag",  "value":serviceTagVal, "transcriptFields":["Service_Tag__c"]},
-                                                                    {"label":"Issue Description", "transcriptFields":["Description__c"]},
-                                                                    {"label":"AccountNumber", "transcriptFields":["CustomerNumber__c"]},
-                                                                    {"label":"Account BUID", "transcriptFields":["CustomerBUID__c"]}, -->
