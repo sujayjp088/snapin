@@ -188,11 +188,12 @@
         var selectLang = $('#language').attr('sellang')
         var initESW = function(gslbBaseURL, deploymentId, buttonId, serviceTagVal, issueVal, selectLang) {
             embedded_svc.settings.displayHelpButton = true; //Or false
-            if( selectLang === 'ja' ) {
-                embedded_svc.settings.language = 'ja';
-            } else {
-                embedded_svc.settings.language = '';
-            }
+            // if( selectLang === 'ja' ) {
+            //     embedded_svc.settings.language = 'ja';
+            // } else {
+            //     embedded_svc.settings.language = '';
+            // }
+            embedded_svc.settings.language = 'ja';
 
             embedded_svc.settings.enabledFeatures = ['LiveAgent'];
             embedded_svc.settings.entryFeature = 'LiveAgent';
