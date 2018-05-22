@@ -80,143 +80,101 @@
         
  
       <title>Pre-Chat Form</title>
-      <style type="text/css">
-        
-        body {
-        margin: auto; 
-        max-width: 600px;
-        background-color: #F9F9F9;
-        }
-        
-        .container {
-          width: 90%;
-          clear: both;
-          text-align: center;
-          margin: auto;
-          font-family: "Helvetica Neue", Helvetica Neue, Arial, sans-serif;
-          font-weight: 200;
-          font-size: 1.2em;
-          color: #5e5e5e;
-          padding: 15px;
-        }
-        
-        .container input {
-          width: 90%;
-          clear: both;
-          border: 1px solid #D3D3D3;
-          border-radius: 4px;
-          font-size: 1em;
-          font-weight: 200;
-          padding: 5px;
-          margin-top: 10px;
-        }
-        
-        #prechat_submit {
-          width: 50%;
-          font-size: 1em;
-          font-weight: 200;
-          border-radius: 4px;
-          background: #4494ED;
-          color: #FFFFFF;
-          border: none;
-          cursor: pointer;
-          padding: 7px;
-        }
-        
-        #prechat_submit:hover {
-          background: #1674df;
-        }
-        
-        #prechat_submit:focus {
-          outline: 0;
-        }
-        
-        #charNum {
-          color: #AAAAAA;
-          text-align: right;
-          width: 95%;
-          display: inherit;
-        }
-        
-        @media screen and (max-width: 425px), handheld and (max-device-width: 425px) {
-          body {
-            width: 300px;
-          }
-        }
-      </style>
+      <link rel="stylesheet" type="text/css" media="screen" href="/node_modules/bootstrap/dist/css/bootstrap.min.css" />
+      <link rel="stylesheet" type="text/css" media="screen" href="/main.css" />
     </head>
 
  <body>
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+            <img src="/assets/DellTech_Logo_Prm_Blue.jpg" class="d-inline-block align-top" alt="">
+        </a>
+    </nav>
     <div class="container">
-    <img src="http://www.underconsideration.com/brandnew/archives/dell_2016_logo.png" height="120px" width="120px" style="alight:middle" />
-        <form method="post" id="prechatForm">
-           
- <!-- Detail inputs -->
-          <input type="text" name="liveagent.prechat:contactFirstName"  autofocus="true"  id='firstName'  maxlength="80" placeholder="FirstName" />
-          <input type="text" name="liveagent.prechat:contactLastName" required="required" autofocus="true" id='lastName' maxlength="80" placeholder="LastName" />
-          <input type="text" name="liveagent.prechat:contactEmail"  maxlength="80" placeholder="Email"  />
-          <input type="text" name="liveagent.prechat:contactPhone" required="required" maxlength="100"   placeholder="Phone" />
-          <input type="text" name="liveagent.prechat:caseSubject"  id="subject" autofocus="true"  maxlength="80" placeholder="Subject" />
-          <input type="text" name="liveagent.prechat:caseServiceTag" id= "prechat_field_service_tag" required="required" autofocus="true"  maxlength="80" placeholder="ServiceTag" />
-          <input type="text" name="liveagent.prechat:caseSR" autofocus="true"  maxlength="80" placeholder="SR#" />
-          <input type="text" name="liveagent.prechat:caseDescription"  autofocus="true"  maxlength="80" placeholder="Description" />
-          <input type="text" name="liveagent.prechat:inputPhoneExt"  autofocus="true"  maxlength="80" placeholder="Phone Ext" />
-          <input type="text" name="liveagent.prechat:customerNumber" id="customerNumber"   placeholder="CustomerNumber#"/>
-          <input type="text" name="liveagent.prechat:customerBUID" id="customerBUID"  placeholder="Cust BUID"/>   
-           <!--
-          <input type="text" name="liveagent.prechat:customerNumber" placeholder="CustomerNumber#"/>
-          <input type="text" name="liveagent.prechat:customerBUID" placeholder="Cust BUID"/>
-        -->
-<!-- hidden fields -->
-<input type="hidden" name="liveagent.prechat:isclosed" value="false" />
-<input type="hidden" name="liveagent.prechat:status" value="New" />
-<input type="hidden" name="liveagent.prechat:origin" value="Chat" />
-<input type="hidden" name="liveagent.prechat.name" id="prechat_field_name" />
-<input type="hidden" id="btnid" name="liveagent.prechat:button"/> 
-            
-            
-<!-- save inputs to transcripts  -->          
-<input type="hidden" name="liveagent.prechat.save:contactFirstName" value="FirstName__c" />
-<input type="hidden" name="liveagent.prechat.save:contactLastName" value="LastName__c" />  
-<input type="hidden" name="liveagent.prechat.save:contactEmail" value="Email__c" />  
-<input type="hidden" name="liveagent.prechat.save:contactPhone" value="ContactNumber__c" />
-<input type="hidden" name="liveagent.prechat.save:customerNumber" value="CustomerNumber__c" />   
-<input type="hidden" name="liveagent.prechat.save:customerBUID" value="CustomerBUID__c" /> 
-<input type="hidden" name="liveagent.prechat.save:caseSubject" value="Issue__c" />  
-<input type="hidden" name="liveagent.prechat.save:caseServiceTag" value="Service_Tag__c" />  
-<input type="hidden" name="liveagent.prechat.save:caseSR" value="Service_Request_Number__c" />  
-<input type="hidden" name="liveagent.prechat.save:caseDescription" value="Description__c" />     
-           
-              
-<!--Map the detail inputs to the Asset fields -->
-<input type="hidden" name="liveagent.prechat.findorcreate.map:Asset" value="Name,caseServiceTag" />    
+      <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+          <form method="post" id="prechatForm">
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" class="form-control"  id="firstName" aria-describedby="firstName" placeholder="First Name" name="liveagent.prechat:contactFirstName"  autofocus="true"  maxlength="80">
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" class="form-control"  id="lastName" aria-describedby="lastName" placeholder="Last Name" name="liveagent.prechat:contactLastName" required="required" autofocus="true" maxlength="80">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" class="form-control"  id="email" aria-describedby="email" placeholder="Email" name="liveagent.prechat:contactEmail"  maxlength="80">
+            </div>
+            <div class="form-group">
+                <label for="phoneNumber">Phone</label>
+                <input type="text" class="form-control"  id="phoneNumber" aria-describedby="phoneNumber" placeholder="Phone" name="liveagent.prechat:contactPhone" required="required" maxlength="100">
+            </div>
+            <div class="form-group">
+                <label for="subject">Subject</label>
+                <input type="text" class="form-control"  id="subject" aria-describedby="subject" placeholder="Subject" name="liveagent.prechat:caseSubject" autofocus="true"  maxlength="80">
+            </div>
+            <div class="form-group">
+                <label for="serviceTag">Service Tag</label>
+                <input type="text" class="form-control"  id="serviceTag" aria-describedby="serviceTag" placeholder="Service Tag" name="liveagent.prechat:caseServiceTag" required="required" autofocus="true"  maxlength="80">
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" class="form-control"  id="description" aria-describedby="description" placeholder="Description" name="liveagent.prechat:caseDescription"  autofocus="true"  maxlength="80">
+            </div>
 
-<!-- find the Asset -->
-<input type="hidden" name="liveagent.prechat.findorcreate.map.doFind:Asset" value="Name,true" />
-<input type="hidden" name="liveagent.prechat.findorcreate.map.isExactMatch:Asset" value="Name,true" />  
+            <!-- Detail inputs -->
+            <!-- hidden fields -->
+            <input type="hidden" name="liveagent.prechat:isclosed" value="false" />
+            <input type="hidden" name="liveagent.prechat:status" value="New" />
+            <input type="hidden" name="liveagent.prechat:origin" value="Chat" />
+            <input type="hidden" name="liveagent.prechat.name" id="prechat_field_name" />
+            <input type="hidden" id="btnid" name="liveagent.prechat:button"/> 
+                        
+                        
+            <!-- save inputs to transcripts  -->          
+            <input type="hidden" name="liveagent.prechat.save:contactFirstName" value="FirstName__c" />
+            <input type="hidden" name="liveagent.prechat.save:contactLastName" value="LastName__c" />  
+            <input type="hidden" name="liveagent.prechat.save:contactEmail" value="Email__c" />  
+            <input type="hidden" name="liveagent.prechat.save:contactPhone" value="ContactNumber__c" />
+            <input type="hidden" name="liveagent.prechat.save:customerNumber" value="CustomerNumber__c" />   
+            <input type="hidden" name="liveagent.prechat.save:customerBUID" value="CustomerBUID__c" /> 
+            <input type="hidden" name="liveagent.prechat.save:caseSubject" value="Issue__c" />  
+            <input type="hidden" name="liveagent.prechat.save:caseServiceTag" value="Service_Tag__c" />  
+            <input type="hidden" name="liveagent.prechat.save:caseSR" value="Service_Request_Number__c" />  
+            <input type="hidden" name="liveagent.prechat.save:caseDescription" value="Description__c" />     
+                      
+                          
+            <!--Map the detail inputs to the Asset fields -->
+            <input type="hidden" name="liveagent.prechat.findorcreate.map:Asset" value="Name,caseServiceTag" />    
 
-<!-- Link the Asset to the Case -->  
-<input type= "hidden" name="liveagent.prechat.findorcreate.linkToEntity:Asset" value="Case,AssetId" />  
+            <!-- find the Asset -->
+            <input type="hidden" name="liveagent.prechat.findorcreate.map.doFind:Asset" value="Name,true" />
+            <input type="hidden" name="liveagent.prechat.findorcreate.map.isExactMatch:Asset" value="Name,true" />  
 
-<!-- saveToTranscript: Associates the records found / created, i.e. Contact, Case and Asset to the Live Chat Transcript record. -->
-<input type="hidden" name="liveagent.prechat.findorcreate.saveToTranscript:Asset" value="Asset__c" />          
+            <!-- Link the Asset to the Case -->  
+            <input type= "hidden" name="liveagent.prechat.findorcreate.linkToEntity:Asset" value="Case,AssetId" />  
+
+            <!-- saveToTranscript: Associates the records found / created, i.e. Contact, Case and Asset to the Live Chat Transcript record. -->
+            <input type="hidden" name="liveagent.prechat.findorcreate.saveToTranscript:Asset" value="Asset__c" />          
 
 
 
-<input type="submit" value="Request Chat" id="prechat_submit" onclick="setName()" />
+            <input type="submit" value="Request Chat" id="prechat_submit" onclick="setName()" />
 
 
-            
-<script type="text/javascript">
-   function setName() {
-    document.getElementById("prechat_field_name").value =  
-        document.getElementById("firstName").value + " " + document.getElementById("lastName").value;
-    }
+                        
+            <script type="text/javascript">
+              function setName() {
+                document.getElementById("prechat_field_name").value =  
+                    document.getElementById("firstName").value + " " + document.getElementById("lastName").value;
+                }
 
-</script>
-
-  
-        </form>
-    </div>
+            </script>
+          </form>
+        </div>
+      </div>
+    </div> 
 </body>
   </html>
