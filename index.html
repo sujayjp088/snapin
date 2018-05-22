@@ -45,15 +45,6 @@
                             <p>Based on asset warranty contact channel will be displayed</p>
                         </div>
                         <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="language" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Select Your Language
-                            </button>
-                            <div id="languageDropdown" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#" lang="ja">Japanese - ja</a>
-                                <a class="dropdown-item" href="#" lang="en-us">English en-us</a>
-                            </div>
-                        </div>
-                        <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Select Issue Type
                             </button>
@@ -130,13 +121,6 @@
                 $('.live-agent-heading').hide();
             }
         }
-    });
-
-    $('#languageDropdown > a').click(function() {
-        var attrVal = $(this).attr('lang');
-        var eleVal = $(this).text();
-        $('#language').attr('selLang', attrVal);
-        $('#language').text(eleVal);
     });
 
     (function() {
@@ -278,7 +262,7 @@
     }
 
     function changeMaxLengthInput(eleSelector, findingEle) {
-        $('.fieldList').append('<li class="inputText embeddedServiceSidebarFormField" data-aura-class="embeddedServiceSidebarFormField"><div class="uiInput uiInputText uiInput--default uiInput--input" data-aura-class="uiInput uiInputText uiInput--default uiInput--input"><label class="uiLabel-left form-element__label uiLabel" for="Description__c" data-aura-rendered-by="109:0" data-aura-class="uiLabel"><span class="">Case Description</span><span class="required" aria-hidden="true">*</span></label><input class="Description__c slds-style-inputtext input" maxlength="500" type="text" aria-describedby="" placeholder="" required="" id="Description__c" aria-required="true"></div></li>');
+        // $('.fieldList').append('<li class="inputText embeddedServiceSidebarFormField" data-aura-class="embeddedServiceSidebarFormField"><div class="uiInput uiInputText uiInput--default uiInput--input" data-aura-class="uiInput uiInputText uiInput--default uiInput--input"><label class="uiLabel-left form-element__label uiLabel" for="Description__c" data-aura-rendered-by="109:0" data-aura-class="uiLabel"><span class="">Case Description</span><span class="required" aria-hidden="true">*</span></label><input class="Description__c slds-style-inputtext input" maxlength="500" type="text" aria-describedby="" placeholder="" required="" id="Description__c" aria-required="true"></div></li>');
         clearInterval(findingEle);
     }
 
