@@ -44,7 +44,7 @@
                             <input type="text" class="form-control"  id="serviceTag" aria-describedby="serviceTag" placeholder="Enter Service Tag" onblur="showIssue()">
                             <p>Based on asset warranty contact channel will be displayed</p>
                         </div>
-                        <div class="dropdown">
+                        <div class="dropdown hide">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Select Issue Type
                             </button>
@@ -57,7 +57,7 @@
                     </form>
                 </div>
             </div>
-            <div id="contact-row" class="row">
+            <div id="contact-row" class="row hide">
                 <div class="col-lg-2"></div>
                 <div class="col-lg-8">
                     <h3 class="non-live-agent">Contact Options</h3>
@@ -94,13 +94,11 @@
 <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script type='text/javascript'>
-    $('.dropdown').hide();
-    $('#contact-row').hide();
     $('#issueDropdown > a').click(function() {
         var val = $(this).text();
         if( val != 'Select Issue Type' ) {
             $('#dropdownMenuButton').text(val);
-            $('#contact-row').show();
+            $('#contact-row').removeClass('hide');
             if( document.getElementById('serviceTag').value.toLowerCase() === 'dtb4pc2' ) {
                 $('.call-us').hide();
                 $('.live-agent-button').hide();
@@ -124,7 +122,6 @@
     });
 
     (function() {
-        debugger;
         if( window.location.href.split("?").length > 1 ) {
             var urlParameters = window.location.href.split("?")[1];
             var serviceTag = urlParameters.split("&")[0].split("=")[1].toLowerCase();
@@ -146,11 +143,11 @@
 
     function showIssue() {
         if( $('#serviceTag').val().length != 0 ) {
-            $('.dropdown').show();
+            $('.dropdown').removeClass('hide');
         } else {
-            $('.dropdown').hide();
+            $('.dropdown').addClass('hide');
             $('#dropdownMenuButton').text('Select Issue Type');
-            $('#contact-row').hide();
+            $('#contact-row').addClass("hide");
         }
     }
 
@@ -170,8 +167,8 @@
             deploymentId = '572m00000004Cl2'; 
         }
         serviceTagVal = serviceTagVal.toUpperCase();
-        var selectLang = $('#language').attr('sellang')
-        var initESW = function(gslbBaseURL, deploymentId, buttonId, serviceTagVal, issueVal, selectLang) {
+        // var selectLang = $('#language').attr('sellang')
+        var initESW = function(gslbBaseURL, deploymentId, buttonId, serviceTagVal, issueVal) {
             embedded_svc.settings.displayHelpButton = true; //Or false
             // if( selectLang === 'ja' ) {
             //     embedded_svc.settings.language = 'ja';

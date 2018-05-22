@@ -11,6 +11,14 @@
     width: 100%;
 }
 
+.dropdown.hide {
+    display: none;
+}
+
+#contact-row.hide {
+    display: none;
+}
+
 .call-us {
     border: 1px solid #e3e3e3;
     padding: 15px;
