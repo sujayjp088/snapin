@@ -83,6 +83,17 @@
                                 liveagent.showWhenOffline('5733B0000004D90', document.getElementById('liveagent_button_offline_5733B0000004D90'));
                                 });</script> 
                         </div>
+                        <div class="live-agent-button">
+                            <script type='text/javascript' src='https://c.la4-c1cs-phx.salesforceliveagent.com/content/g/js/43.0/deployment.js'></script>
+                            <script type='text/javascript'>
+                            liveagent.init('https://d.la4-c1cs-phx.salesforceliveagent.com/chat', '5733B0000004D95', '00Dm0000000DQXs');
+                            </script>
+                        <a id="liveagent_button_online_5733B0000004D95" class="btn btn-primary" href="javascript://Chat" onclick="liveagent.startChat('5733B0000004D95')">Start Chat</a><div id="liveagent_button_offline_5733B0000004D95" style="display: none;"><!-- Offline Chat Content --></div><script type="text/javascript">
+                            if (!window._laq) { window._laq = []; }
+                            window._laq.push(function(){liveagent.showWhenOnline('5733B0000004D95', document.getElementById('liveagent_button_online_5733B0000004D95'));
+                            liveagent.showWhenOffline('5733B0000004D95', document.getElementById('liveagent_button_offline_5733B0000004D95'));
+                            });</script> 
+                        </div>
                     </div>
                 </div>
             </div>
@@ -128,13 +139,17 @@
             var srNumber = urlParameters.split("&")[1].split("=")[1].toLowerCase();
             var FirstName = urlParameters.split("&")[2].split("=")[1].toLowerCase();
             var lastName = urlParameters.split("&")[3].split("=")[1].toLowerCase();
-            if( serviceTag != '' ) {
-                resumeChat("573m00000004DCd", "572m00000004Cl7", serviceTag, srNumber, FirstName, lastName, 'snapIn');
-                // resumeChat("573m00000004DCE", "572m00000004Cl2", serviceTag, srNumber, FirstName, lastName, 'snapIn');
-                eleExist('#helpButtonSpan > .message', chatClick);
+            if( serviceTag === '10cy091' ) {
+                resumeChat("5733B0000004D95", "00Dm0000000DQXs", serviceTag, srNumber, FirstName, lastName, 'liveAgent');
+            } else {
+                if( serviceTag != '' ) {
+                    resumeChat("573m00000004DCd", "572m00000004Cl7", serviceTag, srNumber, FirstName, lastName, 'snapIn');
+                    // resumeChat("573m00000004DCE", "572m00000004Cl2", serviceTag, srNumber, FirstName, lastName, 'snapIn');
+                    eleExist('#helpButtonSpan > .message', chatClick);
+                }
+                $('.resume-chat-msg').removeClass('hide');
+                $('.new-chat').addClass('hide');
             }
-            $('.resume-chat-msg').removeClass('hide');
-            $('.new-chat').addClass('hide');
         } else {
             $('.resume-chat-msg').addClass('hide');
             $('.new-chat').removeClass('hide');
@@ -350,8 +365,9 @@
         clearInterval(findingEle);
     }
 
-    function resumeChat(buttonId, deploymentId, serviceTag, srNumber, FirstName, lastName) {
-        var initESW = function(gslbBaseURL) {
+    function resumeChat(buttonId, deploymentId, serviceTag, srNumber, FirstName, lastName, resumeType) {
+        if( resumeType === 'snapIn' ) {
+            var initESW = function(gslbBaseURL) {
             embedded_svc.settings.displayHelpButton = true; //Or false
             embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
             // embedded_svc.settings.initialInteractionState = "WAITING";
@@ -381,6 +397,15 @@
 
             // embedded_svc.settings.extraPrechatFormDetails = [{ "label":"First Name", "name":"FirstName", "value":FirstName, "displayToAgent":true }, { "label":"Last Name", "value":lastName, "displayToAgent":true } ];
             embedded_svc.init('https://dellservices--DEV3.cs20.my.salesforce.com', 'https://dev3-dev2-dellservices--dev2.cs20.force.com/LASI1', gslbBaseURL, '00Dm0000000DQXs', 'Test_snapin_resumechat', { baseLiveAgentContentURL: 'https://c.la4-c1cs-phx.salesforceliveagent.com/content', deploymentId: deploymentId, buttonId: buttonId, baseLiveAgentURL: 'https://d.la4-c1cs-phx.salesforceliveagent.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Im0000000001xEAA_1638222454e', isOfflineSupportEnabled: false}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://dellservices--DEV3.cs20.my.salesforce.com/embeddedservice/5.0/esw.min.js'); s.onload = function() { initESW(null, srNumber); }; document.body.appendChild(s); } else { initESW('https://service.force.com', srNumber); }
+        } else { 
+            eleExist('#liveagent_button_online_5733B0000004D95', liveAgentResume);
+        } 
+    }
+
+    function liveAgentResume(eleSelector, findingEle) {
+        $(eleSelector).click();
+        clearInterval(findingEle);
     }
 </script>
+
 </html>
