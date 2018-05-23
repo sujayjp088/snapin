@@ -403,7 +403,9 @@
     }
 
     function liveAgentResume(eleSelector, findingEle) {
-        $(eleSelector).click();
+        setTimeout(function(){
+            $(eleSelector).click();
+        }, 1000);
         clearInterval(findingEle);
     }
 </script>
