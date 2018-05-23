@@ -268,13 +268,13 @@
                 var s = document.createElement('script'); 
                 s.setAttribute('src', 'https://dellservices--DEV3.cs20.my.salesforce.com/embeddedservice/5.0/esw.min.js');
                 s.onload = function() { 
-                    initESW(null, deploymentId, buttonId, serviceTagVal, issueVal); 
+                    initESW(null, deploymentId, buttonId, serviceTagVal, issueVal, browserLang); 
                 }; 
                 document.body.appendChild(s); 
                 eleExist('#helpButtonSpan > .message', chatClick); 
                 eleExist('.Issue_Description__c', changeMaxLengthInput);
             } else { 
-                initESW('https://service.force.com', deploymentId, buttonId, serviceTagVal, issueVal);
+                initESW('https://service.force.com', deploymentId, buttonId, serviceTagVal, issueVal, browserLang);
                 eleExist('#helpButtonSpan > .message', chatClick); 
                 eleExist('.Issue_Description__c', changeMaxLengthInput);
             }
