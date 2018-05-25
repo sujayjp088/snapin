@@ -80,3 +80,17 @@
   #prechat_submit:focus {
     outline: 0;
   }
+
+  .live-agent-resume-button.hide {
+      display: none;
+  }
+
+  .live-agent-resume-button {
+    display: inline-block;
+    margin: 0 auto;
+  }
+
+  .offline-msg {
+    text-align: center;
+    font-size: 25px;
+  }
