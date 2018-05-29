@@ -1,3 +1,20 @@
+function callingSnapIn(deploymentId, buttonId, serviceTagVal, issueVal, browserLang, descriptionText) {
+    if (!window.embedded_svc) { 
+        var s = document.createElement('script'); 
+        s.setAttribute('src', 'https://dellservices--DEV3.cs20.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+        s.onload = function() { 
+            snapInCode(null, deploymentId, buttonId, serviceTagVal, issueVal, browserLang, descriptionText); 
+        }; 
+        document.body.appendChild(s); 
+        eleExist('#helpButtonSpan > .message', chatClick); 
+        eleExist('.Issue_Description__c', changeMaxLengthInput);
+    } else { 
+        snapInCode('https://service.force.com', deploymentId, buttonId, serviceTagVal, issueVal, browserLang, descriptionText);
+        eleExist('#helpButtonSpan > .message', chatClick); 
+        eleExist('.Issue_Description__c', changeMaxLengthInput);
+    }
+}
+
 function snapInCode(gslbBaseURL, deploymentId, buttonId, serviceTagVal, issueVal, browserLang, descriptionText) {
     embedded_svc.settings.displayHelpButton = true;
     embedded_svc.settings.enabledFeatures = ['LiveAgent'];
@@ -137,23 +154,6 @@ function snapInCode(gslbBaseURL, deploymentId, buttonId, serviceTagVal, issueVal
         isOfflineSupportEnabled: false
     }); 
 };
-
-function callingSnapIn(initESW) {
-    if (!window.embedded_svc) { 
-        var s = document.createElement('script'); 
-        s.setAttribute('src', 'https://dellservices--DEV3.cs20.my.salesforce.com/embeddedservice/5.0/esw.min.js');
-        s.onload = function() { 
-            initESW(null, deploymentId, buttonId, serviceTagVal, issueVal, browserLang, descriptionText); 
-        }; 
-        document.body.appendChild(s); 
-        eleExist('#helpButtonSpan > .message', chatClick); 
-        eleExist('.Issue_Description__c', changeMaxLengthInput);
-    } else { 
-        initESW('https://service.force.com', deploymentId, buttonId, serviceTagVal, issueVal, browserLang, descriptionText);
-        eleExist('#helpButtonSpan > .message', chatClick); 
-        eleExist('.Issue_Description__c', changeMaxLengthInput);
-    }
-}
 
 function eleExist(eleSelector, callbackFunc) {
     var findingEle = setInterval(function() {
