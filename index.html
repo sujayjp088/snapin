@@ -193,30 +193,31 @@
         // var selectLang = $('#language').attr('sellang')
         var browserLang = navigator.language || navigator.userLanguage;
         var descriptionText = $('#description-textarea').val();
-        var initESW = snapInCode(gslbBaseURL, deploymentId, buttonId, serviceTagVal, issueVal, browserLang, descriptionText)
-        if (!window.embedded_svc) { 
-            var s = document.createElement('script'); 
-            s.setAttribute('src', 'https://dellservices--DEV3.cs20.my.salesforce.com/embeddedservice/5.0/esw.min.js');
-            s.onload = function() { 
-                initESW(null, deploymentId, buttonId, serviceTagVal, issueVal, browserLang, descriptionText); 
-            }; 
-            document.body.appendChild(s); 
-            eleExist('#helpButtonSpan > .message', chatClick); 
-            eleExist('.Issue_Description__c', changeMaxLengthInput);
-        } else { 
-            initESW('https://service.force.com', deploymentId, buttonId, serviceTagVal, issueVal, browserLang, descriptionText);
-            eleExist('#helpButtonSpan > .message', chatClick); 
-            eleExist('.Issue_Description__c', changeMaxLengthInput);
-        }
+        var initESW = snapInCode(gslbBaseURL, deploymentId, buttonId, serviceTagVal, issueVal, browserLang, descriptionText);
+        callingSnapIn(initESW);
+        // if (!window.embedded_svc) { 
+        //     var s = document.createElement('script'); 
+        //     s.setAttribute('src', 'https://dellservices--DEV3.cs20.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+        //     s.onload = function() { 
+        //         initESW(null, deploymentId, buttonId, serviceTagVal, issueVal, browserLang, descriptionText); 
+        //     }; 
+        //     document.body.appendChild(s); 
+        //     eleExist('#helpButtonSpan > .message', chatClick); 
+        //     eleExist('.Issue_Description__c', changeMaxLengthInput);
+        // } else { 
+        //     initESW('https://service.force.com', deploymentId, buttonId, serviceTagVal, issueVal, browserLang, descriptionText);
+        //     eleExist('#helpButtonSpan > .message', chatClick); 
+        //     eleExist('.Issue_Description__c', changeMaxLengthInput);
+        // }
     }
 
-    function eleExist(eleSelector, callbackFunc) {
-        var findingEle = setInterval(function() {
-            if( $(eleSelector).length > 0 ) {
-                callbackFunc(eleSelector, findingEle);
-            }
-        }, 1000);
-    }
+    // function eleExist(eleSelector, callbackFunc) {
+    //     var findingEle = setInterval(function() {
+    //         if( $(eleSelector).length > 0 ) {
+    //             callbackFunc(eleSelector, findingEle);
+    //         }
+    //     }, 1000);
+    // }
 
     function chatClick(eleSelector, findingEle) {
         if( $(eleSelector).text() === 'Chat with an Expert' ) {

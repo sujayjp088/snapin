@@ -137,6 +137,8 @@ function snapInCode(gslbBaseURL, deploymentId, buttonId, serviceTagVal, issueVal
         isOfflineSupportEnabled: false
     }); 
 };
+
+function callingSnapIn(initESW) {
     if (!window.embedded_svc) { 
         var s = document.createElement('script'); 
         s.setAttribute('src', 'https://dellservices--DEV3.cs20.my.salesforce.com/embeddedservice/5.0/esw.min.js');
@@ -151,3 +153,12 @@ function snapInCode(gslbBaseURL, deploymentId, buttonId, serviceTagVal, issueVal
         eleExist('#helpButtonSpan > .message', chatClick); 
         eleExist('.Issue_Description__c', changeMaxLengthInput);
     }
+}
+
+function eleExist(eleSelector, callbackFunc) {
+    var findingEle = setInterval(function() {
+        if( $(eleSelector).length > 0 ) {
+            callbackFunc(eleSelector, findingEle);
+        }
+    }, 1000);
+}
