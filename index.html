@@ -195,6 +195,7 @@
         var descriptionText = $('#description-textarea').val();
         var gslbBaseURL = null;
         var initESW = snapInCode(gslbBaseURL, deploymentId, buttonId, serviceTagVal, issueVal, browserLang, descriptionText);
+        callingSnapIn(initESW);
         // if (!window.embedded_svc) { 
         //     var s = document.createElement('script'); 
         //     s.setAttribute('src', 'https://dellservices--DEV3.cs20.my.salesforce.com/embeddedservice/5.0/esw.min.js');
