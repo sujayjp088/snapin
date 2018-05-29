@@ -56,6 +56,10 @@
                             <input type="text" class="form-control"  id="serviceTag" aria-describedby="serviceTag" placeholder="Enter Service Tag" onblur="showIssue()">
                             <p>Based on asset warranty contact channel will be displayed</p>
                         </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Description</label>
+                            <textarea class="form-control" id="description-textarea" rows="5"></textarea>
+                        </div>
                         <div class="dropdown hide">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Select Issue Type
@@ -187,7 +191,8 @@
         serviceTagVal = serviceTagVal.toUpperCase();
         // var selectLang = $('#language').attr('sellang')
         var browserLang = navigator.language || navigator.userLanguage;
-        var initESW = function(gslbBaseURL, deploymentId, buttonId, serviceTagVal, issueVal, browserLang) {
+        var descriptionText = $('#description-textarea').val();
+        var initESW = function(gslbBaseURL, deploymentId, buttonId, serviceTagVal, issueVal, browserLang, descriptionText) {
             embedded_svc.settings.displayHelpButton = true; //Or false
             // if( selectLang === 'ja' ) {
             //     embedded_svc.settings.language = 'ja';
@@ -271,6 +276,7 @@
                                                         {"label":"Issue Description", "transcriptFields":["Description__c"]},
                                                         {"label":"AccountNumber", "transcriptFields":["CustomerNumber__c"]},
                                                         {"label":"Account BUID", "transcriptFields":["CustomerBUID__c"]},
+                                                        {"label":"Long Description", "value":descriptionText, "transcriptFields":["Long_Description__c"]}
                                                         ]; 
 
                 embedded_svc.settings.extraPrechatInfo = [{
@@ -336,13 +342,13 @@
                 var s = document.createElement('script'); 
                 s.setAttribute('src', 'https://dellservices--DEV3.cs20.my.salesforce.com/embeddedservice/5.0/esw.min.js');
                 s.onload = function() { 
-                    initESW(null, deploymentId, buttonId, serviceTagVal, issueVal, browserLang); 
+                    initESW(null, deploymentId, buttonId, serviceTagVal, issueVal, browserLang, descriptionText); 
                 }; 
                 document.body.appendChild(s); 
                 eleExist('#helpButtonSpan > .message', chatClick); 
                 eleExist('.Issue_Description__c', changeMaxLengthInput);
             } else { 
-                initESW('https://service.force.com', deploymentId, buttonId, serviceTagVal, issueVal, browserLang);
+                initESW('https://service.force.com', deploymentId, buttonId, serviceTagVal, issueVal, browserLang, descriptionText);
                 eleExist('#helpButtonSpan > .message', chatClick); 
                 eleExist('.Issue_Description__c', changeMaxLengthInput);
             }
