@@ -91,10 +91,9 @@ function snapInCode(gslbBaseURL, deploymentId, buttonId, serviceTagVal, issueVal
                                                 {"label":"Service Tag", "value":serviceTagVal, "transcriptFields":["Service_Tag__c"]},
                                                 {"label":"Issue Description", "transcriptFields":["Description__c"]},
                                                 {"label":"AccountNumber", "transcriptFields":["CustomerNumber__c"]},
-                                                {"label":"Account BUID", "transcriptFields":["CustomerBUID__c"]},
-                                                {"label":"Long Description", "value":descriptionText, "transcriptFields":["Long_Description__c"]}
+                                                {"label":"Account BUID", "transcriptFields":["CustomerBUID__c"]}
                                                 ]; 
-
+// ,{"label":"Long Description", "value":descriptionText, "transcriptFields":["Long_Description__c"]}
         embedded_svc.settings.extraPrechatInfo = [{
                     "entityFieldMaps": [{
                         "doCreate":false,
