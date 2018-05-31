@@ -19,7 +19,7 @@ function snapInCode(gslbBaseURL, deploymentId, buttonId, serviceTagVal, issueVal
     embedded_svc.settings.displayHelpButton = true;
     embedded_svc.settings.enabledFeatures = ['LiveAgent'];
     embedded_svc.settings.entryFeature = 'LiveAgent';
-    if( serviceTagVal === '29vzs71' ) {
+    if( serviceTagVal === '29VZS71' ) {
         embedded_svc.settings.prepopulatedPrechatFields = {
             FirstName: "John",
             LastName: "Doe"
