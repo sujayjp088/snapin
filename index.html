@@ -56,10 +56,10 @@
                             <input type="text" class="form-control"  id="serviceTag" aria-describedby="serviceTag" placeholder="Enter Service Tag" onblur="showIssue()">
                             <p>Based on asset warranty contact channel will be displayed</p>
                         </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="exampleFormControlTextarea1">Description</label>
                             <textarea class="form-control" id="description-textarea" rows="5"></textarea>
-                        </div>
+                        </div> -->
                         <div class="dropdown hide">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Select Issue Type
@@ -226,7 +226,7 @@
     }
 
     function changeMaxLengthInput(eleSelector, findingEle) {
-        $('.fieldList').append('<li class="inputText embeddedServiceSidebarFormField" data-aura-class="embeddedServiceSidebarFormField"><div class="uiInput uiInputText uiInput--default uiInput--input" data-aura-class="uiInput uiInputText uiInput--default uiInput--input"><label class="uiLabel-left form-element__label uiLabel" for="Long_Description__c" data-aura-rendered-by="109:0" data-aura-class="uiLabel"><span class="">Long Description</span><span class="required" aria-hidden="true">*</span></label><input class="Long_Description__c slds-style-inputtext input" maxlength="500" type="text" aria-describedby="" placeholder="" required="" id="Long_Description__c" aria-required="true"></div></li>');
+        // $('.fieldList').append('<li class="inputText embeddedServiceSidebarFormField" data-aura-class="embeddedServiceSidebarFormField"><div class="uiInput uiInputText uiInput--default uiInput--input" data-aura-class="uiInput uiInputText uiInput--default uiInput--input"><label class="uiLabel-left form-element__label uiLabel" for="Long_Description__c" data-aura-rendered-by="109:0" data-aura-class="uiLabel"><span class="">Long Description</span><span class="required" aria-hidden="true">*</span></label><input class="Long_Description__c slds-style-inputtext input" maxlength="500" type="text" aria-describedby="" placeholder="" required="" id="Long_Description__c" aria-required="true"></div></li>');
         clearInterval(findingEle);
     }
 
