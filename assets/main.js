@@ -19,6 +19,10 @@ function snapInCode(gslbBaseURL, deploymentId, buttonId, serviceTagVal, issueVal
     embedded_svc.settings.displayHelpButton = true;
     embedded_svc.settings.enabledFeatures = ['LiveAgent'];
     embedded_svc.settings.entryFeature = 'LiveAgent';
+    embedded_svc.settings.prepopulatedPrechatFields = {
+        FirstName: "John",
+        LastName: "Doe"
+    }        
     if( browserLang === 'ja' ) {
         embedded_svc.settings.extraPrechatFormDetails = [
                                                 {"label":"名", "transcriptFields":["FirstName__c"]},
