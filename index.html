@@ -89,15 +89,16 @@
                         <p>Start a chat session with one of our technical support experts.</p>
                         <button type="button" id="chatButton" class="btn btn-primary" onclick="initChat()">Start Chat</button>
                         <div class="live-agent-button">
-                                <script type='text/javascript' src='https://c.la4-c1cs-phx.salesforceliveagent.com/content/g/js/43.0/deployment.js'></script>
+                                <!-- <script type='text/javascript' src='https://c.la4-c1cs-phx.salesforceliveagent.com/content/g/js/43.0/deployment.js'></script>
                                 <script type='text/javascript'>
                                 liveagent.init('https://d.la4-c1cs-phx.salesforceliveagent.com/chat', '5723B0000004Crz', '00Dm0000000DQXs');
-                                </script>
-                            <a id="liveagent_button_online_5733B0000004D90" class="btn btn-primary" href="javascript://Chat" onclick="liveagent.startChat('5733B0000004D90')">Start Chat</a><div id="liveagent_button_offline_5733B0000004D90" style="display: none;"><!-- Offline Chat Content --></div><script type="text/javascript">
+                                </script> -->
+                            <a id="liveagent_button_online_5733B0000004D90" class="btn btn-primary" href="javascript://Chat" onclick="startLiveAgentChat('5733B0000004D90')">Start Chat</a><div id="liveagent_button_offline_5733B0000004D90" style="display: none;"><!-- Offline Chat Content --></div>
+                            <!-- <script type="text/javascript">
                                 if (!window._laq) { window._laq = []; }
                                 window._laq.push(function(){liveagent.showWhenOnline('5733B0000004D90', document.getElementById('liveagent_button_online_5733B0000004D90'));
                                 liveagent.showWhenOffline('5733B0000004D90', document.getElementById('liveagent_button_offline_5733B0000004D90'));
-                                });</script> 
+                                });</script>  -->
                         </div>
                     </div>
                 </div>
@@ -111,6 +112,7 @@
 <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script src="assets/main.js"></script>
 <script type='text/javascript'>
+    initLiveAgent('5733B0000004D90', '5723B0000004Crz', '00Dm0000000DQXs');
     $('#issueDropdown > a').click(function() {
         var val = $(this).text();
         if( val != 'Select Issue Type' ) {
@@ -193,7 +195,7 @@
         // var selectLang = $('#language').attr('sellang')
         var browserLang = navigator.language || navigator.userLanguage;
         var descriptionText = $('#description-textarea').val();
-        callingSnapIn(deploymentId, buttonId, serviceTagVal, issueVal, browserLang, descriptionText);
+        initSnapIn(deploymentId, buttonId, serviceTagVal, issueVal, browserLang, descriptionText);
         // if (!window.embedded_svc) { 
         //     var s = document.createElement('script'); 
         //     s.setAttribute('src', 'https://dellservices--DEV3.cs20.my.salesforce.com/embeddedservice/5.0/esw.min.js');

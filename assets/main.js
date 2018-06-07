@@ -1,21 +1,42 @@
-function callingSnapIn(deploymentId, buttonId, serviceTagVal, issueVal, browserLang, descriptionText) {
+//buttonId - 5733B0000004D90
+//deploymentId - 5723B0000004Crz
+//organizationId - 00Dm0000000DQXs
+function initLiveAgent(buttonId, deploymentId, organizationId) {
+    liveagent.init('https://d.la4-c1cs-phx.salesforceliveagent.com/chat', deploymentId, organizationId);
+
+    if (!window._laq) { 
+        window._laq = []; 
+    }
+    window._laq.push(function() {
+        liveagent.showWhenOnline(buttonId, document.getElementById('liveagent_button_online_' + buttonId));
+        liveagent.showWhenOffline(buttonId, document.getElementById('liveagent_button_offline_' + buttonId));
+    });
+}
+
+function startLiveAgentChat(buttonId) {
+    liveagent.startChat(buttonId);
+}
+
+//replacing function name callingSnapIn to initSnapIn
+function initSnapIn(deploymentId, buttonId, serviceTagVal, issueVal, browserLang, descriptionText) {
     if (!window.embedded_svc) { 
         var s = document.createElement('script'); 
         s.setAttribute('src', 'https://dellservices--DEV3.cs20.my.salesforce.com/embeddedservice/5.0/esw.min.js');
         s.onload = function() { 
-            snapInCode(null, deploymentId, buttonId, serviceTagVal, issueVal, browserLang, descriptionText); 
+            triggerSnapIn(null, deploymentId, buttonId, serviceTagVal, issueVal, browserLang, descriptionText); 
         }; 
         document.body.appendChild(s); 
         eleExist('#helpButtonSpan > .message', chatClick); 
         eleExist('.Issue_Description__c', changeMaxLengthInput);
     } else { 
-        snapInCode('https://service.force.com', deploymentId, buttonId, serviceTagVal, issueVal, browserLang, descriptionText);
+        triggerSnapIn('https://service.force.com', deploymentId, buttonId, serviceTagVal, issueVal, browserLang, descriptionText);
         eleExist('#helpButtonSpan > .message', chatClick); 
         eleExist('.Issue_Description__c', changeMaxLengthInput);
     }
 }
 
-function snapInCode(gslbBaseURL, deploymentId, buttonId, serviceTagVal, issueVal, browserLang, descriptionText) {
+//replacing function name snapInCode to triggerSnapIn
+function triggerSnapIn(gslbBaseURL, deploymentId, buttonId, serviceTagVal, issueVal, browserLang, descriptionText) {
     embedded_svc.settings.displayHelpButton = true;
     embedded_svc.settings.enabledFeatures = ['LiveAgent'];
     embedded_svc.settings.entryFeature = 'LiveAgent';
