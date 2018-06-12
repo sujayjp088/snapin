@@ -29,6 +29,7 @@ function initSnapIn(deploymentId, buttonId, serviceTagVal, issueVal, browserLang
             triggerSnapIn(null, deploymentId, buttonId, serviceTagVal, issueVal, browserLang, descriptionText); 
         }; 
         document.body.appendChild(s); 
+        eleExist('.waitingCancelChat', chatCancelButtonEvent);
         eleExist('#helpButtonSpan > .message', chatClick); 
         eleExist('.Issue_Description__c', changeMaxLengthInput);
     } else { 
@@ -185,9 +186,18 @@ function triggerSnapIn(gslbBaseURL, deploymentId, buttonId, serviceTagVal, issue
 };
 
 function eleExist(eleSelector, callbackFunc) {
-    var findingEle = setInterval(function() {
-        if( $(eleSelector).length > 0 ) {
-            callbackFunc(eleSelector, findingEle);
-        }
-    }, 1000);
+    try {
+        var findingEle = setInterval(function() {
+            if( $(eleSelector).length > 0 ) {
+                callbackFunc(eleSelector, findingEle);
+            }
+        }, 1000);
+    } catch(e) {
+        console.log('error in ' + callbackFunc + ' function: ' + e);
+    }
+}
+
+function chatCancelButtonEvent(eleSelector, findingEle) {
+    console.log(eleSelector);
+    console.log(findingEle);
 }
