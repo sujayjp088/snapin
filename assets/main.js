@@ -199,7 +199,8 @@ function eleExist(eleSelector, callbackFunc) {
 }
 
 function chatCancelButtonEvent(eleSelector, findingEle) {
-    console.log(eleSelector);
-    console.log(findingEle);
+    $(eleSelector).click(function() {
+        alert('yes this is click');
+    });
     clearInterval(findingEle);
 }
