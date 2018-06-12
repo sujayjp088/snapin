@@ -199,12 +199,12 @@ function eleExist(eleSelector, callbackFunc) {
     }, 1000);
 }
 
-// function chatCancelButtonEvent(eleSelector, findingEle) {
-//     $(eleSelector).click(function() {
-//         alert('yes this is click');
-//     });
-//     clearInterval(findingEle);
-// }
+function chatCancelButtonEvent(eleSelector, findingEle) {
+    $(eleSelector).click(function() {
+        alert('yes this is click');
+    });
+    clearInterval(findingEle);
+}
 
 function waitingStateCallback(eleSelector, findingEle) {
     console.log(eleSelector + ' : this is waiting state');
