@@ -30,6 +30,7 @@ function initSnapIn(deploymentId, buttonId, serviceTagVal, issueVal, browserLang
         }; 
         document.body.appendChild(s); 
         eleExist('.waitingCancelChat', chatCancelButtonEvent);
+        eleExist('.waitingStateContent', waitingStateCallback);
         eleExist('#helpButtonSpan > .message', chatClick); 
         eleExist('.Issue_Description__c', changeMaxLengthInput);
     } else { 
@@ -198,9 +199,14 @@ function eleExist(eleSelector, callbackFunc) {
     }
 }
 
-function chatCancelButtonEvent(eleSelector, findingEle) {
-    $(eleSelector).click(function() {
-        alert('yes this is click');
-    });
+// function chatCancelButtonEvent(eleSelector, findingEle) {
+//     $(eleSelector).click(function() {
+//         alert('yes this is click');
+//     });
+//     clearInterval(findingEle);
+// }
+
+function waitingStateCallback(eleSelector, findingEle) {
+    console.log(eleSelector + ' : this is waiting state');
     clearInterval(findingEle);
 }
