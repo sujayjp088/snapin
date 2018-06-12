@@ -212,13 +212,13 @@
         // }
 }
 
-    function eleExist(eleSelector, callbackFunc) {
-        var findingEle = setInterval(function() {
-            if( $(eleSelector).length > 0 ) {
-                callbackFunc(eleSelector, findingEle);
-            }
-        }, 1000);
-    }
+    // function eleExist(eleSelector, callbackFunc) {
+    //     var findingEle = setInterval(function() {
+    //         if( $(eleSelector).length > 0 ) {
+    //             callbackFunc(eleSelector, findingEle);
+    //         }
+    //     }, 1000);
+    // }
 
     function chatClick(eleSelector, findingEle) {
         if( $(eleSelector).text() === 'Chat with an Expert' ) {
