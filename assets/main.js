@@ -188,15 +188,15 @@ function triggerSnapIn(gslbBaseURL, deploymentId, buttonId, serviceTagVal, issue
 };
 
 function eleExist(eleSelector, callbackFunc) {
-    try {
-        var findingEle = setInterval(function() {
-            if( $(eleSelector).length > 0 ) {
+    var findingEle = setInterval(function() {
+        if( $(eleSelector).length > 0 ) {
+            try {
                 callbackFunc(eleSelector, findingEle);
+            } catch(e) {
+                console.log('error in ' + callbackFunc + ' function: ' + e);
             }
-        }, 1000);
-    } catch(e) {
-        console.log('error in ' + callbackFunc + ' function: ' + e);
-    }
+        }
+    }, 1000);
 }
 
 // function chatCancelButtonEvent(eleSelector, findingEle) {
