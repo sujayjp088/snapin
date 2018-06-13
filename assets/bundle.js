@@ -1,12 +1,7 @@
-//buttonId - 5733B0000004D90
-//deploymentId - 5723B0000004Crz
-//organizationId - 00Dm0000000DQXs
+//liveagent init
 function initLiveAgent(buttonId, deploymentId, organizationId) {
-    var s = document.createElement('script'); 
-    s.setAttribute('src', 'https://c.la4-c1cs-phx.salesforceliveagent.com/content/g/js/43.0/deployment.js'); 
-    document.body.appendChild(s); 
+    $.getScript('https://c.la4-c1cs-phx.salesforceliveagent.com/content/g/js/43.0/deployment.js');
     liveagent.init('https://d.la4-c1cs-phx.salesforceliveagent.com/chat', deploymentId, organizationId);
-
     if (!window._laq) { 
         window._laq = []; 
     }
@@ -16,29 +11,32 @@ function initLiveAgent(buttonId, deploymentId, organizationId) {
     });
 }
 
+// starting live agent chat
 function startLiveAgentChat(buttonId) {
     liveagent.startChat(buttonId);
 }
 
-//replacing function name callingSnapIn to initSnapIn
+//SnapIn code inititation
 function initSnapIn(deploymentId, buttonId, serviceTagVal, issueVal, browserLang, descriptionText) {
     if (!window.embedded_svc) { 
-        var s = document.createElement('script'); 
+        var s = document.createElement('script');
+        debugger;
         s.setAttribute('src', 'https://dellservices--DEV3.cs20.my.salesforce.com/embeddedservice/5.0/esw.min.js');
         s.onload = function() { 
-            triggerSnapIn(null, deploymentId, buttonId, serviceTagVal, issueVal, browserLang, descriptionText); 
+            
         }; 
-        document.body.appendChild(s); 
-        eleExist('#helpButtonSpan > .message', chatClick); 
-        eleExist('.Issue_Description__c', changeMaxLengthInput);
+        $.getScript('https://dellservices--DEV3.cs20.my.salesforce.com/embeddedservice/5.0/esw.min.js', function()
+        {
+            triggerSnapIn(null, deploymentId, buttonId, serviceTagVal, issueVal, browserLang, descriptionText); 
+        });
+        debugger;
+        document.body.appendChild(s);
     } else { 
         triggerSnapIn('https://service.force.com', deploymentId, buttonId, serviceTagVal, issueVal, browserLang, descriptionText);
-        eleExist('#helpButtonSpan > .message', chatClick); 
-        eleExist('.Issue_Description__c', changeMaxLengthInput);
     }
 }
 
-//replacing function name snapInCode to triggerSnapIn
+//main trigger point for snapIN and configuration
 function triggerSnapIn(gslbBaseURL, deploymentId, buttonId, serviceTagVal, issueVal, browserLang, descriptionText) {
     embedded_svc.settings.displayHelpButton = true;
     embedded_svc.settings.enabledFeatures = ['LiveAgent'];
@@ -183,11 +181,3 @@ function triggerSnapIn(gslbBaseURL, deploymentId, buttonId, serviceTagVal, issue
         isOfflineSupportEnabled: false
     }); 
 };
-
-function eleExist(eleSelector, callbackFunc) {
-    var findingEle = setInterval(function() {
-        if( $(eleSelector).length > 0 ) {
-            callbackFunc(eleSelector, findingEle);
-        }
-    }, 1000);
-}
