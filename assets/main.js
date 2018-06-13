@@ -27,8 +27,12 @@ function initSnapIn(deploymentId, buttonId, serviceTagVal, issueVal, browserLang
         debugger;
         s.setAttribute('src', 'https://dellservices--DEV3.cs20.my.salesforce.com/embeddedservice/5.0/esw.min.js');
         s.onload = function() { 
-            triggerSnapIn(null, deploymentId, buttonId, serviceTagVal, issueVal, browserLang, descriptionText); 
+            
         }; 
+        $.getScript('https://dellservices--DEV3.cs20.my.salesforce.com/embeddedservice/5.0/esw.min.js', function()
+        {
+            triggerSnapIn(null, deploymentId, buttonId, serviceTagVal, issueVal, browserLang, descriptionText); 
+        });
         debugger;
         document.body.appendChild(s); 
         eleExist('.waitingCancelChat', chatCancelButtonEvent);
