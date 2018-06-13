@@ -23,11 +23,13 @@ function startLiveAgentChat(buttonId) {
 //replacing function name callingSnapIn to initSnapIn
 function initSnapIn(deploymentId, buttonId, serviceTagVal, issueVal, browserLang, descriptionText) {
     if (!window.embedded_svc) { 
-        var s = document.createElement('script'); 
+        var s = document.createElement('script');
+        debugger;
         s.setAttribute('src', 'https://dellservices--DEV3.cs20.my.salesforce.com/embeddedservice/5.0/esw.min.js');
         s.onload = function() { 
             triggerSnapIn(null, deploymentId, buttonId, serviceTagVal, issueVal, browserLang, descriptionText); 
         }; 
+        debugger;
         document.body.appendChild(s); 
         eleExist('.waitingCancelChat', chatCancelButtonEvent);
         eleExist('.waitingStateContent', waitingStateCallback);
