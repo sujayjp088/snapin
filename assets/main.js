@@ -2,9 +2,13 @@
 //deploymentId - 5723B0000004Crz
 //organizationId - 00Dm0000000DQXs
 function initLiveAgent(buttonId, deploymentId, organizationId) {
-    var s = document.createElement('script'); 
-    s.setAttribute('src', 'https://c.la4-c1cs-phx.salesforceliveagent.com/content/g/js/43.0/deployment.js'); 
-    document.body.appendChild(s); 
+    // var s = document.createElement('script'); 
+    // s.setAttribute('src', 'https://c.la4-c1cs-phx.salesforceliveagent.com/content/g/js/43.0/deployment.js'); 
+    // document.body.appendChild(s);
+    $.getScript('https://c.la4-c1cs-phx.salesforceliveagent.com/content/g/js/43.0/deployment.js', function()
+    {
+        //triggerSnapIn(null, deploymentId, buttonId, serviceTagVal, issueVal, browserLang, descriptionText); 
+    });
     liveagent.init('https://d.la4-c1cs-phx.salesforceliveagent.com/chat', deploymentId, organizationId);
 
     if (!window._laq) { 
