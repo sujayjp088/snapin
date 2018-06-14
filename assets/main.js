@@ -1,13 +1,14 @@
 //liveagent init
 function initLiveAgent(buttonId, deploymentId, organizationId) {
-    $.getScript('https://c.la4-c1cs-phx.salesforceliveagent.com/content/g/js/43.0/deployment.js');
-    liveagent.init('https://d.la4-c1cs-phx.salesforceliveagent.com/chat', deploymentId, organizationId);
-    if (!window._laq) { 
-        window._laq = []; 
-    }
-    window._laq.push(function() {
-        liveagent.showWhenOnline(buttonId, document.getElementById('liveagent_button_online_' + buttonId));
-        liveagent.showWhenOffline(buttonId, document.getElementById('liveagent_button_offline_' + buttonId));
+    $.getScript('https://c.la4-c1cs-phx.salesforceliveagent.com/content/g/js/43.0/deployment.js', function() {
+        liveagent.init('https://d.la4-c1cs-phx.salesforceliveagent.com/chat', deploymentId, organizationId);
+        if (!window._laq) { 
+            window._laq = []; 
+        }
+        window._laq.push(function() {
+            liveagent.showWhenOnline(buttonId, document.getElementById('liveagent_button_online_' + buttonId));
+            liveagent.showWhenOffline(buttonId, document.getElementById('liveagent_button_offline_' + buttonId));
+        });
     });
 }
 
@@ -49,6 +50,7 @@ function triggerSnapIn(gslbBaseURL, deploymentId, buttonId, serviceTagVal, issue
     embedded_svc.settings.displayHelpButton = true;
     embedded_svc.settings.enabledFeatures = ['LiveAgent'];
     embedded_svc.settings.entryFeature = 'LiveAgent';
+    embedded_svc.settings.storageDomain = "https://mishra93mohit.github.io"
     if( serviceTagVal === '29VZS71' ) {
         embedded_svc.settings.prepopulatedPrechatFields = {
             FirstName: "John",
