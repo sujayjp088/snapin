@@ -26,16 +26,16 @@ function initSnapIn(deploymentId, buttonId, serviceTagVal, issueVal, browserLang
             triggerSnapIn(null, deploymentId, buttonId, serviceTagVal, issueVal, browserLang, descriptionText); 
         };
         document.body.appendChild(s); 
-        eleExist('.waitingCancelChat', chatCancelButtonEvent);
-        eleExist('.waitingStateContent', waitingStateCallback);
-        eleExist('#helpButtonSpan > .message', chatClick); 
-        eleExist('.Issue_Description__c', changeMaxLengthInput);
+        // eleExist('.waitingCancelChat', chatCancelButtonEvent);
+        // eleExist('.waitingStateContent', waitingStateCallback);
+        // eleExist('#helpButtonSpan > .message', chatClick); 
+        // eleExist('.Issue_Description__c', changeMaxLengthInput);
     } else { 
         triggerSnapIn('https://service.force.com', deploymentId, buttonId, serviceTagVal, issueVal, browserLang, descriptionText);
-        eleExist('.waitingCancelChat', chatCancelButtonEvent);
-        eleExist('.waitingStateContent', waitingStateCallback);
-        eleExist('#helpButtonSpan > .message', chatClick); 
-        eleExist('.Issue_Description__c', changeMaxLengthInput);
+        // eleExist('.waitingCancelChat', chatCancelButtonEvent);
+        // eleExist('.waitingStateContent', waitingStateCallback);
+        // eleExist('#helpButtonSpan > .message', chatClick); 
+        // eleExist('.Issue_Description__c', changeMaxLengthInput);
     }
 }
 
