@@ -9,8 +9,181 @@
 <body>
     <p>Just another page</p>
 </body>
-    <script src="/assets/main.js"></script>
-    <script>
-        triggerSnapIn();
-    </script>
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="https://unpkg.com/popper.js/dist/umd/popper.min.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<script src="assets/main.js"></script>
+<script type='text/javascript'>
+    initLiveAgent('5733B0000004D90', '5723B0000004Crz', '00Dm0000000DQXs');
+    $('#issueDropdown > a').click(function() {
+        var val = $(this).text();
+        if( val != 'Select Issue Type' ) {
+            $('#dropdownMenuButton').text(val);
+            $('#contact-row').removeClass('hide');
+            if( document.getElementById('serviceTag').value.toLowerCase() === 'dtb4pc2' ) {
+                $('.call-us').hide();
+                $('.live-agent-button').hide();
+                $('#chatButton').show();
+                $('.non-live-agent').show();
+                $('.live-agent-heading').hide();
+            } else if( document.getElementById('serviceTag').value.toLowerCase() === '10cy091' ) {
+                $('.call-us').show();
+                $('.live-agent-button').show();
+                $('#chatButton').hide();
+                $('.non-live-agent').hide();
+                $('.live-agent-heading').show();
+            } else {
+                $('.call-us').show();
+                $('.live-agent-button').hide();
+                $('#chatButton').show();
+                $('.non-live-agent').show();
+                $('.live-agent-heading').hide();
+            }
+        }
+    });
+
+    (function() {
+        if( window.location.href.split("?").length > 1 ) {
+            var urlParameters = window.location.href.split("?")[1];
+            var serviceTag = urlParameters.split("&")[0].split("=")[1].toLowerCase();
+            var srNumber = urlParameters.split("&")[1].split("=")[1].toLowerCase();
+            var FirstName = urlParameters.split("&")[2].split("=")[1].toLowerCase();
+            var lastName = urlParameters.split("&")[3].split("=")[1].toLowerCase();
+            if( serviceTag === '10cy091' ) {
+                resumeChat("5733B0000004D95", "00Dm0000000DQXs", serviceTag, srNumber, FirstName, lastName, 'liveAgent');
+                $('.resume-chat-msg').removeClass('hide');
+                $('.new-chat').addClass('hide');
+            } else {
+                if( serviceTag != '' ) {
+                    resumeChat("573m00000004DCd", "572m00000004Cl7", serviceTag, srNumber, FirstName, lastName, 'snapIn');
+                    // resumeChat("573m00000004DCE", "572m00000004Cl2", serviceTag, srNumber, FirstName, lastName, 'snapIn');
+                    eleExist('#helpButtonSpan > .message', chatClick);
+                }
+                $('.resume-chat-msg').removeClass('hide');
+                $('.new-chat').addClass('hide');
+            }
+        } else {
+            $('.resume-chat-msg').addClass('hide');
+            $('.new-chat').removeClass('hide');
+        }
+    })();
+
+    function showIssue() {
+        if( $('#serviceTag').val().length != 0 ) {
+            $('.dropdown').removeClass('hide');
+        } else {
+            $('.dropdown').addClass('hide');
+            $('#dropdownMenuButton').text('Select Issue Type');
+            $('#contact-row').addClass("hide");
+        }
+    }
+
+    function initChat(serviceTag) {
+        var buttonId, deploymentId;
+        if( serviceTag === "" || serviceTag === undefined  ) {
+            var serviceTagVal = document.getElementById('serviceTag').value.toLowerCase();
+            var issueVal = $('#dropdownMenuButton').text();
+        } else {
+            var serviceTagVal = serviceTag;
+        }
+        if( serviceTagVal === 'dtb4pc2' ) {
+            buttonId = '573m00000004DC9';
+            deploymentId = '572m00000004Ckx';
+        } else if( serviceTagVal === '261kz72' || serviceTagVal === '29vzs71' ) {
+            buttonId = '573m00000004DCE';
+            deploymentId = '572m00000004Cl2'; 
+        }
+        serviceTagVal = serviceTagVal.toUpperCase();
+        // var selectLang = $('#language').attr('sellang')
+        var browserLang = navigator.language || navigator.userLanguage;
+        var descriptionText = $('#description-textarea').val();
+        initSnapIn(deploymentId, buttonId, serviceTagVal, issueVal, browserLang, descriptionText);
+        // if (!window.embedded_svc) { 
+        //     var s = document.createElement('script'); 
+        //     s.setAttribute('src', 'https://dellservices--DEV3.cs20.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+        //     s.onload = function() { 
+        //         initESW(null, deploymentId, buttonId, serviceTagVal, issueVal, browserLang, descriptionText); 
+        //     }; 
+        //     document.body.appendChild(s); 
+        //     eleExist('#helpButtonSpan > .message', chatClick); 
+        //     eleExist('.Issue_Description__c', changeMaxLengthInput);
+        // } else { 
+        //     initESW('https://service.force.com', deploymentId, buttonId, serviceTagVal, issueVal, browserLang, descriptionText);
+        //     eleExist('#helpButtonSpan > .message', chatClick); 
+        //     eleExist('.Issue_Description__c', changeMaxLengthInput);
+        // }
+}
+
+    // function eleExist(eleSelector, callbackFunc) {
+    //     var findingEle = setInterval(function() {
+    //         if( $(eleSelector).length > 0 ) {
+    //             callbackFunc(eleSelector, findingEle);
+    //         }
+    //     }, 1000);
+    // }
+
+    function chatClick(eleSelector, findingEle) {
+        // if( $(eleSelector).text() === 'Chat with an Expert' ) {
+        //     $('#helpButtonSpan > .message').click();
+        //     clearInterval(findingEle);
+        // }
+    }
+
+    function changeMaxLengthInput(eleSelector, findingEle) {
+        // $('.fieldList').append('<li class="inputText embeddedServiceSidebarFormField" data-aura-class="embeddedServiceSidebarFormField"><div class="uiInput uiInputText uiInput--default uiInput--input" data-aura-class="uiInput uiInputText uiInput--default uiInput--input"><label class="uiLabel-left form-element__label uiLabel" for="Long_Description__c" data-aura-rendered-by="109:0" data-aura-class="uiLabel"><span class="">Long Description</span><span class="required" aria-hidden="true">*</span></label><input class="Long_Description__c slds-style-inputtext input" maxlength="500" type="text" aria-describedby="" placeholder="" required="" id="Long_Description__c" aria-required="true"></div></li>');
+        clearInterval(findingEle);
+    }
+
+    function resumeChat(buttonId, deploymentId, serviceTag, srNumber, FirstName, lastName, resumeType) {
+        if( resumeType === 'snapIn' ) {
+            var initESW = function(gslbBaseURL) {
+            embedded_svc.settings.displayHelpButton = true; //Or false
+            embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+            // embedded_svc.settings.initialInteractionState = "WAITING";
+            embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+            embedded_svc.settings.entryFeature = 'LiveAgent';
+            
+            embedded_svc.settings.extraPrechatFormDetails = [{
+                "label":"Delta Sr",
+                "value": srNumber,
+                "transcriptFields":[ "Delta_SR__c" ]
+            },
+            { "label":"First Name", "name":"FirstName", "value":FirstName, "displayToAgent":true },
+            { "label":"Last Name", "value":lastName, "displayToAgent":true }];
+             
+            // embedded_svc.settings.extraPrechatInfo = [{
+            //         "entityFieldMaps": [{
+            //             "doCreate":false,
+            //             "doFind":false,
+            //             "fieldName":"Delta_SR__c",
+            //             "isExactMatch":true,
+            //             "label":"Delta Sr"
+            //         }
+            //         ],
+            //         "entityName":"LiveChatTranscript",
+            //         "saveToTranscript": "Delta_SR__c"
+            //     }];
+
+            // embedded_svc.settings.extraPrechatFormDetails = [{ "label":"First Name", "name":"FirstName", "value":FirstName, "displayToAgent":true }, { "label":"Last Name", "value":lastName, "displayToAgent":true } ];
+            embedded_svc.init('https://dellservices--DEV3.cs20.my.salesforce.com', 'https://dev3-dev2-dellservices--dev2.cs20.force.com/LASI1', gslbBaseURL, '00Dm0000000DQXs', 'Test_snapin_resumechat', { baseLiveAgentContentURL: 'https://c.la4-c1cs-phx.salesforceliveagent.com/content', deploymentId: deploymentId, buttonId: buttonId, baseLiveAgentURL: 'https://d.la4-c1cs-phx.salesforceliveagent.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Im0000000001xEAA_1638222454e', isOfflineSupportEnabled: false}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://dellservices--DEV3.cs20.my.salesforce.com/embeddedservice/5.0/esw.min.js'); s.onload = function() { initESW(null, srNumber); }; document.body.appendChild(s); } else { initESW('https://service.force.com', srNumber); }
+        } else { 
+            liveagent.addCustomDetail('deltaSr', srNumber).saveToTranscript('Delta_Sr__c');
+            liveagent.findOrCreate("Case").map("Delta_SR__c","deltaSr",true, false, true).showOnCreate();
+            liveagent.init('https://d.la4-c1cs-phx.salesforceliveagent.com/chat', '5723B0000004Crz', '00Dm0000000DQXs');
+            liveagent.setName(FirstName + ' ' + lastName);
+            $('.live-agent-resume-button').removeClass('hide');
+            // eleExist('#liveagent_button_online_5733B0000004D95', liveAgentResume);
+            setInterval(function() {
+                var onlineStatus = $('#liveagent_button_online_5733B0000004D95').attr('style').split(":")[1].replace(/ /g,'').split(";")[0];
+                var offlineStatus = $('#liveagent_button_online_5733B0000004D95').attr('style').split(":")[1].replace(/ /g,'').split(";")[0];
+                if( onlineStatus === 'none' ) {
+                    $('.offline-msg').removeClass('hide');
+                } else if( offlineStatus === 'none' ) {
+                    $('.offline-msg').addClass('hide');
+                }
+            }, 1000);
+        } 
+    }
+</script>
 </html>
