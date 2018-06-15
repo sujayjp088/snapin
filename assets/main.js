@@ -44,7 +44,7 @@ function triggerSnapIn(gslbBaseURL, deploymentId, buttonId, serviceTagVal, issue
     embedded_svc.settings.displayHelpButton = true;
     embedded_svc.settings.enabledFeatures = ['LiveAgent'];
     embedded_svc.settings.entryFeature = 'LiveAgent';
-    embedded_svc.settings.storageDomain = "https://mishra93mohit.github.io/snapin"
+    embedded_svc.settings.storageDomain = "mishra93mohit.github.io"
     if( serviceTagVal === '29VZS71' ) {
         embedded_svc.settings.prepopulatedPrechatFields = {
             FirstName: "John",
