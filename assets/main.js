@@ -176,15 +176,7 @@ function triggerSnapIn(gslbBaseURL, deploymentId, buttonId, serviceTagVal, issue
                 }
             ];  
     }                                        
-    embedded_svc.init('https://dellservices--DEV3.cs20.my.salesforce.com', 'https://dev3-dev2-dellservices--dev2.cs20.force.com/LA', gslbBaseURL, '00Dm0000000DQXs', 'Test_Snap_In', { 
-        baseLiveAgentContentURL: 'https://c.la4-c1cs-phx.salesforceliveagent.com/content', 
-        deploymentId: '572m00000004Ckx', 
-        buttonId: '573m00000004DC9', 
-        baseLiveAgentURL: 'https://d.la4-c1cs-phx.salesforceliveagent.com/chat', 
-        eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Im0000000001iEAA_16369f295e6', 
-        isOfflineSupportEnabled: false
-    }); 
-};
+    embedded_svc.init('https://dellservices--DEV3.cs20.my.salesforce.com', 'https://dev3-dev2-dellservices--dev2.cs20.force.com/LASI1', gslbBaseURL, '00Dm0000000DQXs', 'Test_Snap_In', { baseLiveAgentContentURL: 'https://c.la4-c1cs-phx.salesforceliveagent.com/content', deploymentId: '572m00000004Ckx', buttonId: '573m00000004DC9', baseLiveAgentURL: 'https://d.la4-c1cs-phx.salesforceliveagent.com/chat', eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04Im0000000001iEAA_16369f295e6', isOfflineSupportEnabled: false}); };if (!window.embedded_svc) { var s = document.createElement('script'); s.setAttribute('src', 'https://dellservices--DEV3.cs20.my.salesforce.com/embeddedservice/5.0/esw.min.js'); s.onload = function() { initESW(null); }; document.body.appendChild(s); } else { initESW('https://service.force.com'); };
 
 function eleExist(eleSelector, callbackFunc) {
     var findingEle = setInterval(function() {
